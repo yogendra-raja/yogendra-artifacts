@@ -1,0 +1,99 @@
+{
+    "name": "yogendra_get_tasks",
+    "description": "Get all tasks for a file",
+    "permission": "read_only",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "file_id": {
+                "type": "string",
+                "title": "File Id"
+            }
+        },
+        "required": ["file_id"]
+    },
+    "output_schema": {
+        "type": "object",
+        "description": "The tasks on a Box file.",
+        "properties": {
+            "box_file_tasks": {
+                "type": "array",
+                "title": "Box File Tasks",
+                "items": {
+                    "type": "object",
+                    "title": "BoxFileTasks",
+                    "properties": {
+                        "task_id": {
+                            "type": "string",
+                            "title": "Task Id"
+                        },
+                        "action": {
+                            "type": "string",
+                            "title": "Action"
+                        },
+                        "message": {
+                            "type": "string",
+                            "title": "Message"
+                        },
+                        "created_by": {
+                            "type": "string",
+                            "title": "Created By"
+                        },
+                        "creation_date": {
+                            "type": "string",
+                            "title": "Creation Date"
+                        },
+                        "assigned_to": {
+                            "type": "string",
+                            "title": "Assigned To"
+                        },
+                        "due_date": {
+                            "type": "string",
+                            "title": "Due Date"
+                        },
+                        "is_completed": {
+                            "type": "boolean",
+                            "title": "Is Completed"
+                        },
+                        "completion_date": {
+                            "title": "Completion Date",
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "task_id",
+                        "action",
+                        "message",
+                        "created_by",
+                        "creation_date",
+                        "assigned_to",
+                        "due_date",
+                        "is_completed",
+                        "completion_date"
+                    ]
+                }
+            }
+        },
+        "required": ["box_file_tasks"],
+        "title": "BoxFileTasksResult"
+    },
+    "binding": {
+        "python": {
+            "function": "agent_ready_tools.tools.productivity.box.get_tasks:get_tasks"
+        }
+    },
+    "category": "tool",
+    "tags": ["Productivity"],
+    "applications": [
+        {
+            "app_id": "box_key_value_ibm_184bdbd3"
+        }
+    ]
+}

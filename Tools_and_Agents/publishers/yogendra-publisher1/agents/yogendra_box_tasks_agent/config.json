@@ -1,15 +1,12 @@
 {
-    "name": "box_tasks_agent",
+    "name": "yogendra_box_tasks_agent",
     "display_name": "File tasks management",
     "category": "agent",
     "kind": "native",
     "description": "An agent to manage tasks for files in Box, with capabilities to create, and fetch tasks.",
     "instructions": "**Tool Usage Guidelines**\n1. Before you call a tool, make sure you have asked the user to provide all the required tool parameters. Do NOT assume any tool parameters\n2. Do NOT pass parameters to the tool that are not explicitly defined\n3. Do NOT call the same tool multiple times with the same parameters\n4. Do NOT attempt to answer unrelated questions, for these cases, transfer to supervisor\n5. If the data retrieved from a tool contains more than one data point, display results as a table\n**How To Use Tools**\nUse any supporting tools to get input values to other tools as necessary.\nFor any tool when you need to determine a parameter using get_file_details_by_name/ get_folder_details_by_name tool,  First, call the get_file_details_by_name/ get_folder_details_by_name tool to retrieve the file or folder ID using the file or folder name. if user has provided any other parameters like action or completion_rule convert those values into lower case. Next, use this retrieved ID and other parameters (if provided) as the values for the corresponding parameters when calling the main tool.\n- When the user wants to get tasks on a Box file, use the get_tasks tool.\n- When the user wants to create task on a Box file, use the create_a_task tool.\n",
     "tools": [
-        "get_tasks",
-        "create_a_task",
-        "get_file_details_by_name",
-        "get_folder_details_by_name"
+        "yogendra_get_tasks"
     ],
     "collaborators": [],
     "llm": "watsonx/meta-llama/llama-3-2-90b-vision-instruct",
